@@ -20,4 +20,4 @@ def lambda_handler(event, context):
                             'Key':object_key
                    }
     Destination_bucket = s3.Bucket(destination_bucket_name)
-    Destination_bucket.copy(copy_source, 'Dup_through_lambda_SQLNOTES')
+    Destination_bucket.copy(copy_source, object_key)

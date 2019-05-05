@@ -10,7 +10,7 @@ if not (os.path.exists(zip_file_path)):
 # with open(zip_file_path, 'rb') as fp:
 #     print (fp)
 
-def create_lambda(destination_name):
+def create_lambda(destination_name, role_arn):
     lambda_client = boto3.client('lambda')
     with open(zip_file_path, 'rb') as f:
         zipped_code = f.read()
@@ -24,7 +24,7 @@ def create_lambda(destination_name):
             }
         },
         Runtime='python3.6',
-        Role='arn:aws:iam::187661186166:role/Lambda_s3_and_executionrole',
+        Role=role_arn,
         Handler='lambda_handler.lambda_handler',
         Code={
             'ZipFile':zipped_code
