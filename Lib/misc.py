@@ -1,5 +1,6 @@
 import random
 
+DEBUG = False
 
 def create_random_string(length=3):
     original_string = 'abcdefghijklmnopqrstuvwxyz'
@@ -11,3 +12,8 @@ def create_random_string(length=3):
 class Custom_Exception(BaseException):
      pass
 
+
+def custom_log(message, level="INFO"):
+    if level == "DEBUG" and DEBUG is not True:
+        return
+    print(message)
